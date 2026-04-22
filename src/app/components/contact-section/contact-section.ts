@@ -3,7 +3,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { CONTACT_FORM_CONFIG } from '../../config/contact-form-config';
+import { CONTACT_FORM_CONFIG } from '../../config/contact-form-config.generated';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll';
 import { Profile } from '../../models/portfolio';
 
@@ -36,7 +36,7 @@ export class ContactSection {
     this.submitError.set('');
 
     if (this.formConfig.accessKey === 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY') {
-      this.submitError.set('Add your Web3Forms access key in contact-form-config.ts to enable live messages.');
+      this.submitError.set('Add your Web3Forms access key through the NG_APP_WEB3FORMS_ACCESS_KEY environment variable to enable live messages.');
       return;
     }
 

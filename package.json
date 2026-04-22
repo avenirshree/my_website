@@ -2,9 +2,13 @@
   "name": "developer-portfolio",
   "version": "0.0.0",
   "scripts": {
+    "generate:contact-config": "node tools/generate-contact-form-config.mjs",
     "ng": "ng",
+    "prestart": "npm run generate:contact-config",
     "start": "ng serve",
+    "prebuild": "npm run generate:contact-config",
     "build": "ng build",
+    "prewatch": "npm run generate:contact-config",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
