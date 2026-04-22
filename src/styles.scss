@@ -1,0 +1,79 @@
+:root {
+  color-scheme: light;
+  --bg-primary: #f6f8fb;
+  --bg-accent: rgba(59, 130, 246, 0.18);
+  --bg-accent-strong: rgba(16, 185, 129, 0.14);
+  --surface-elevated: rgba(255, 255, 255, 0.82);
+  --surface-secondary: rgba(241, 245, 249, 0.9);
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
+  --border-color: rgba(148, 163, 184, 0.28);
+  --accent: #2563eb;
+  --accent-strong: #0f766e;
+  --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-primary: #08111f;
+  --bg-accent: rgba(37, 99, 235, 0.25);
+  --bg-accent-strong: rgba(20, 184, 166, 0.18);
+  --surface-elevated: rgba(15, 23, 42, 0.74);
+  --surface-secondary: rgba(15, 23, 42, 0.9);
+  --text-primary: #e5eefc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: rgba(148, 163, 184, 0.18);
+  --accent: #60a5fa;
+  --accent-strong: #2dd4bf;
+  --shadow-soft: 0 18px 50px rgba(2, 6, 23, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    'Segoe UI',
+    'Inter',
+    sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body,
+input,
+button,
+textarea {
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+a,
+button,
+input,
+textarea {
+  outline-color: color-mix(in srgb, var(--accent) 70%, white);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}

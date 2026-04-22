@@ -1,0 +1,10 @@
+<article class="app-card" appRevealOnScroll>
+  <span class="platform-pill">{{ app().platform }}</span>
+  <h3>{{ app().name }}</h3>
+  <p>{{ app().description }}</p>
+
+  <div class="app-actions">
+    <a [href]="app().primaryLink" target="_blank" rel="noreferrer">Primary Link</a>
+    <a [href]="app().secondaryLink" target="_blank" rel="noreferrer">Web / Store</a>
+  </div>
+</article>

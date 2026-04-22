@@ -1,0 +1,31 @@
+<section class="hero section-shell" appRevealOnScroll>
+  <div class="hero-copy">
+    <span class="eyebrow">Software Developer Portfolio</span>
+    <h1>{{ profile().name }}</h1>
+    <h2>{{ profile().tagline }}</h2>
+    <p>{{ profile().bio }}</p>
+
+    <div class="hero-actions">
+      <a class="primary-btn" href="#projects">View Projects</a>
+      <a class="secondary-btn" href="#contact">Contact Me</a>
+    </div>
+
+    <div class="hero-badges">
+      <span>{{ profile().role }}</span>
+      <span>AI-powered Product Builder</span>
+      <span>Responsive UI Specialist</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="avatar-orbit">
+      <span class="orbit orbit-one"></span>
+      <span class="orbit orbit-two"></span>
+      <span class="orbit orbit-three"></span>
+      <div class="avatar-core">
+        <div class="avatar-face">{{ initials() }}</div>
+        <p>Ready to build scalable products</p>
+      </div>
+    </div>
+  </div>
+</section>

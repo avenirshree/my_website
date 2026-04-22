@@ -1,0 +1,32 @@
+<section class="about section-shell" appRevealOnScroll>
+  <div class="section-heading">
+    <span>About Me</span>
+    <h2>Creating reliable products with clean architecture and user-first design.</h2>
+  </div>
+
+  <div class="about-layout">
+    <article class="about-card">
+      <p>{{ profile().bio }}</p>
+      <div class="skills-grid">
+        @for (skill of skills(); track skill) {
+          <span class="skill-chip">{{ skill }}</span>
+        }
+      </div>
+    </article>
+
+    <aside class="stats-panel">
+      <div class="stat-card">
+        <strong>{{ animatedProjects() }}+</strong>
+        <span>Dummy projects ready to showcase</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ animatedExperience() }}+</strong>
+        <span>Years of development journey</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ animatedApps() }}+</strong>
+        <span>Apps and products highlighted</span>
+      </div>
+    </aside>
+  </div>
+</section>

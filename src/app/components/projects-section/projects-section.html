@@ -1,0 +1,40 @@
+<section class="projects section-shell">
+  <div class="section-heading" appRevealOnScroll>
+    <span>Featured Projects</span>
+    <h2>Explore websites, apps, and AI-first products built for real-world use cases.</h2>
+  </div>
+
+  <div class="toolbar" appRevealOnScroll>
+    <label class="search-field">
+      <span>Search projects</span>
+      <input
+        type="search"
+        placeholder="Search by name, stack, or keyword"
+        (input)="updateSearch(($any($event.target)).value)"
+      />
+    </label>
+
+    <div class="filter-pills" aria-label="Project filters">
+      @for (category of categories; track category) {
+        <button
+          type="button"
+          [class.active]="activeCategory() === category"
+          (click)="setCategory(category)"
+        >
+          {{ category }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="projects-grid">
+    @for (project of filteredProjects(); track project.name) {
+      <app-project-card [project]="project" />
+    } @empty {
+      <div class="empty-state">
+        <h3>No projects match this search yet.</h3>
+        <p>Try a different keyword or switch categories to see the full showcase.</p>
+      </div>
+    }
+  </div>
+</section>

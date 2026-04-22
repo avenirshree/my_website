@@ -1,0 +1,12 @@
+<section class="apps section-shell">
+  <div class="section-heading" appRevealOnScroll>
+    <span>Apps Showcase</span>
+    <h2>Selected mobile and web app concepts presented in a polished card-based layout.</h2>
+  </div>
+
+  <div class="apps-grid">
+    @for (app of apps(); track app.name) {
+      <app-app-card [app]="app" />
+    }
+  </div>
+</section>

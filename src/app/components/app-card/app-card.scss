@@ -1,0 +1,51 @@
+.app-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 45%),
+    var(--surface-elevated);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+}
+
+.platform-pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.app-actions a {
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  color: var(--text-primary);
+  text-decoration: none;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+}

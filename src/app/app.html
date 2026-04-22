@@ -1,0 +1,52 @@
+<div class="page-shell">
+  <header class="topbar">
+    <a class="brand" href="#home">
+      <span class="brand-mark">{{ initials() }}</span>
+      <span class="brand-copy">
+        <strong>{{ displayName() }}</strong>
+        <span>{{ profile()?.role ?? 'Angular + Spring Boot Developer' }}</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      @for (link of navLinks; track link.target) {
+        <a [href]="link.target">{{ link.label }}</a>
+      }
+    </nav>
+
+    <button class="theme-toggle" type="button" (click)="toggleTheme()">
+      <span>{{ isDarkMode() ? 'Light Mode' : 'Dark Mode' }}</span>
+    </button>
+  </header>
+
+  @if (isLoading()) {
+    <main class="state-screen">
+      <div class="state-card">
+        <div class="loader-ring"></div>
+        <h1>Building your portfolio experience...</h1>
+        <p>Loading structured content and interactive sections.</p>
+      </div>
+    </main>
+  } @else if (loadError()) {
+    <main class="state-screen">
+      <div class="state-card">
+        <h1>Something went wrong</h1>
+        <p>{{ loadError() }}</p>
+      </div>
+    </main>
+  } @else if (profile()) {
+    <main>
+      <app-hero-section id="home" [profile]="profile()!" />
+      <app-about-section id="about" [profile]="profile()!" [skills]="skills()" />
+      <app-projects-section id="projects" [projects]="projects()" />
+      <app-apps-section id="apps" [apps]="apps()" />
+      <app-timeline-section id="journey" [timeline]="timeline()" />
+      <app-contact-section id="contact" [profile]="profile()!" />
+    </main>
+  }
+
+  <footer class="footer">
+    <p>Designed for clean storytelling, quick editing, and scalable growth.</p>
+    <span>(c) {{ currentYear }} {{ displayName() }}</span>
+  </footer>
+</div>

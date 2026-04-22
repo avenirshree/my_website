@@ -1,0 +1,19 @@
+<section class="timeline section-shell">
+  <div class="section-heading" appRevealOnScroll>
+    <span>Experience Journey</span>
+    <h2>A simple timeline showing how the developer journey has grown over time.</h2>
+  </div>
+
+  <div class="timeline-list">
+    @for (item of timeline(); track item.year) {
+      <article class="timeline-item" appRevealOnScroll>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span>{{ item.year }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </article>
+    }
+  </div>
+</section>

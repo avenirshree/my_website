@@ -1,0 +1,131 @@
+{
+  "profile": {
+    "name": "Anil Jadhav",
+    "role": "Founder, AniverShree | Full Stack Developer (Angular + Spring Boot)",
+    "tagline": "Building Smart Applications & Scalable Systems",
+    "bio": "Founder of AniverShree and a passionate developer building scalable web applications and intelligent systems. Experienced in Angular, Spring Boot, and AI-powered applications, I enjoy solving real-world problems and creating user-friendly digital experiences through products delivered by my company.",
+    "email": "anil.jadhav@anivershree.com",
+    "github": "https://github.com/aniljadhav-dev",
+    "linkedin": "https://linkedin.com/in/anil-jadhav-dev",
+    "stats": {
+      "projects": 8,
+      "yearsExperience": 3,
+      "appsLaunched": 5
+    }
+  },
+  "skills": [
+    "Angular",
+    "TypeScript",
+    "Java",
+    "Spring Boot",
+    "MySQL",
+    "REST APIs",
+    "AI Integration"
+  ],
+  "projects": [
+    {
+      "name": "AI Family Tree Generator",
+      "description": "An intelligent genealogy platform that transforms family data into dynamic relationship maps. Includes smart profile linking, media uploads, and AI-assisted ancestry insights.",
+      "techStack": ["Angular", "Spring Boot", "MySQL", "OpenAI API"],
+      "category": "AI",
+      "liveDemo": "https://example.com/ai-family-tree",
+      "github": "https://github.com/aniljadhav-dev/ai-family-tree-generator"
+    },
+    {
+      "name": "Online Bookstore Platform",
+      "description": "A full-stack commerce experience for browsing, purchasing, and managing books online. Features admin inventory tools, secure checkout, and personalized recommendations.",
+      "techStack": ["Angular", "Spring Boot", "MySQL", "Stripe"],
+      "category": "Web",
+      "liveDemo": "https://example.com/online-bookstore",
+      "github": "https://github.com/aniljadhav-dev/online-bookstore-platform"
+    },
+    {
+      "name": "Smart Delivery Tracker",
+      "description": "A logistics dashboard for real-time parcel visibility with route summaries and delivery milestones. Built for teams that need actionable data and clear shipment timelines.",
+      "techStack": ["Angular", "Java", "Spring Boot", "REST APIs"],
+      "category": "App",
+      "liveDemo": "https://example.com/smart-delivery-tracker",
+      "github": "https://github.com/aniljadhav-dev/smart-delivery-tracker"
+    },
+    {
+      "name": "Personal Finance Dashboard",
+      "description": "A budgeting and analytics tool that helps users track spending, savings, and recurring bills. Offers visual insights, smart alerts, and mobile-friendly reporting.",
+      "techStack": ["Angular", "TypeScript", "Chart.js", "Node API"],
+      "category": "Web",
+      "liveDemo": "https://example.com/personal-finance-dashboard",
+      "github": "https://github.com/aniljadhav-dev/personal-finance-dashboard"
+    },
+    {
+      "name": "AI Video Generator Tool",
+      "description": "A creative automation platform for generating short-form videos from prompts and scripts. Includes asset sequencing, AI-powered voice generation, and export workflows.",
+      "techStack": ["Angular", "Spring Boot", "FFmpeg", "AI Services"],
+      "category": "AI",
+      "liveDemo": "https://example.com/ai-video-generator",
+      "github": "https://github.com/aniljadhav-dev/ai-video-generator-tool"
+    },
+    {
+      "name": "Portfolio Builder App",
+      "description": "A guided web app for building beautiful portfolio sites with configurable templates and live previews. Designed for developers, designers, and freelancers.",
+      "techStack": ["Angular", "TypeScript", "Firebase", "SCSS"],
+      "category": "App",
+      "liveDemo": "https://example.com/portfolio-builder",
+      "github": "https://github.com/aniljadhav-dev/portfolio-builder-app"
+    },
+    {
+      "name": "Healthcare Appointment Hub",
+      "description": "A patient-first scheduling portal that streamlines doctor bookings, notifications, and record visibility. Focused on clean UX and secure healthcare workflows.",
+      "techStack": ["Angular", "Spring Boot", "MySQL", "JWT"],
+      "category": "Web",
+      "liveDemo": "https://example.com/healthcare-appointment-hub",
+      "github": "https://github.com/aniljadhav-dev/healthcare-appointment-hub"
+    },
+    {
+      "name": "Recruitment Intelligence Suite",
+      "description": "A hiring operations tool that assists recruiters with candidate tracking, scoring, and interview coordination. Adds AI summaries to improve screening speed and consistency.",
+      "techStack": ["Angular", "Java", "Spring Boot", "AI Integration"],
+      "category": "AI",
+      "liveDemo": "https://example.com/recruitment-intelligence-suite",
+      "github": "https://github.com/aniljadhav-dev/recruitment-intelligence-suite"
+    }
+  ],
+  "apps": [
+    {
+      "name": "TaskPilot",
+      "description": "A productivity app for tracking routines, tasks, and deadlines with a clean dashboard and notification support.",
+      "platform": "Web App",
+      "primaryLink": "https://example.com/taskpilot",
+      "secondaryLink": "https://play.google.com/store/apps/details?id=taskpilot.app"
+    },
+    {
+      "name": "HealthSync",
+      "description": "A wellness companion app for monitoring daily habits, water intake, and personalized activity goals.",
+      "platform": "Mobile App",
+      "primaryLink": "https://play.google.com/store/apps/details?id=healthsync.app",
+      "secondaryLink": "https://example.com/healthsync"
+    },
+    {
+      "name": "ShopFlow Admin",
+      "description": "An operations dashboard for catalog control, order fulfillment, and sales reporting in modern retail teams.",
+      "platform": "Web App",
+      "primaryLink": "https://example.com/shopflow-admin",
+      "secondaryLink": "https://example.com/shopflow-admin/docs"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2022",
+      "title": "Started Web Development",
+      "description": "Built foundational frontend skills and started creating responsive interfaces with modern web technologies."
+    },
+    {
+      "year": "2023",
+      "title": "Built Full Stack Projects",
+      "description": "Expanded into backend development, APIs, and database design while delivering end-to-end applications."
+    },
+    {
+      "year": "2024",
+      "title": "Integrated AI into Applications",
+      "description": "Added AI-driven features to real-world products, focusing on automation, insights, and better user experiences."
+    }
+  ]
+}

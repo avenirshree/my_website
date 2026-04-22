@@ -1,0 +1,87 @@
+.section-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0 3rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.section-heading span {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.section-heading h2 {
+  margin: 0;
+  max-width: 48rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: 1.5rem;
+}
+
+.about-card,
+.stat-card {
+  border-radius: 1.6rem;
+  border: 1px solid var(--border-color);
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.about-card {
+  padding: 1.8rem;
+}
+
+.about-card p {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.skill-chip {
+  padding: 0.72rem 0.95rem;
+  border-radius: 999px;
+  color: var(--text-primary);
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.stats-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 2.5rem;
+  color: var(--accent-strong);
+}
+
+.stat-card span {
+  color: var(--text-muted);
+}
+
+@media (max-width: 860px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+}

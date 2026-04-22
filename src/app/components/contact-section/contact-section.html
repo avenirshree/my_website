@@ -1,0 +1,75 @@
+<section class="contact section-shell">
+  <div class="contact-grid">
+    <div class="contact-copy" appRevealOnScroll>
+      <span>Contact</span>
+      <h2>Let's build something thoughtful, scalable, and genuinely useful.</h2>
+      <p>
+        Reach out for collaborations, full stack product work, or AI-enhanced application ideas.
+      </p>
+      <p class="provider-note">
+        Live form setup uses {{ formConfig.provider }} so this portfolio can stay fully static.
+      </p>
+      <p class="provider-note">
+        hCaptcha is enabled for spam protection and should also be activated in your Web3Forms dashboard.
+      </p>
+
+      <div class="contact-links">
+        <a [href]="'mailto:' + profile().email">{{ profile().email }}</a>
+        <a [href]="profile().github" target="_blank" rel="noreferrer">GitHub</a>
+        <a [href]="profile().linkedin" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+
+    <form class="contact-form" appRevealOnScroll (ngSubmit)="submitContactForm()">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" [(ngModel)]="formModel.name" required />
+      </label>
+      <label>
+        <span>Email</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          [(ngModel)]="formModel.email"
+          required
+        />
+      </label>
+      <label>
+        <span>Message</span>
+        <textarea
+          rows="5"
+          name="message"
+          placeholder="Tell me about your project or idea"
+          [(ngModel)]="formModel.message"
+          required
+        ></textarea>
+      </label>
+
+      <div class="captcha-shell">
+        <div class="h-captcha" data-captcha="true" data-theme="light"></div>
+      </div>
+
+      <input
+        class="bot-field"
+        type="checkbox"
+        tabindex="-1"
+        autocomplete="off"
+        name="botcheck"
+        [(ngModel)]="formModel.botcheck"
+      />
+
+      @if (submitSuccess()) {
+        <p class="form-status success">{{ submitSuccess() }}</p>
+      }
+
+      @if (submitError()) {
+        <p class="form-status error">{{ submitError() }}</p>
+      }
+
+      <button type="submit" [disabled]="isSubmitting()">
+        {{ isSubmitting() ? 'Sending...' : 'Send Message' }}
+      </button>
+    </form>
+  </div>
+</section>
