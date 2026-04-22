@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject, input, signal } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -13,9 +13,16 @@ import { Profile } from '../../models/portfolio';
   templateUrl: './contact-section.html',
   styleUrl: './contact-section.scss',
 })
-export class ContactSection {
+export class ContactSection implements AfterViewInit, OnDestroy {
   private readonly http = inject(HttpClient);
   private readonly document = inject(DOCUMENT);
+  private captchaRendered = false;
+  private captchaToken = '';
+  private scriptElement?: HTMLScriptElement;
+  private captchaTheme: 'light' | 'dark' = 'light';
+  private themeObserver?: MutationObserver;
+
+  @ViewChild('captchaContainer') protected captchaContainer?: ElementRef<HTMLDivElement>;
 
   readonly profile = input.required<Profile>();
 
@@ -31,6 +38,17 @@ export class ContactSection {
     botcheck: '',
   };
 
+  ngAfterViewInit(): void {
+    this.captchaTheme = this.getCaptchaTheme();
+    this.observeThemeChanges();
+    this.ensureCaptchaScript();
+  }
+
+  ngOnDestroy(): void {
+    (window as WindowWithHCaptcha).onPortfolioCaptchaLoad = undefined;
+    this.themeObserver?.disconnect();
+  }
+
   protected submitContactForm(): void {
     this.submitSuccess.set('');
     this.submitError.set('');
@@ -44,10 +62,7 @@ export class ContactSection {
       return;
     }
 
-    const captchaToken =
-      this.document.querySelector<HTMLTextAreaElement>('[name="h-captcha-response"]')?.value ?? '';
-
-    if (!captchaToken) {
+    if (!this.captchaToken) {
       this.submitError.set('Please complete the captcha before sending your message.');
       return;
     }
@@ -62,7 +77,7 @@ export class ContactSection {
       email: this.formModel.email,
       message: this.formModel.message,
       botcheck: '',
-      'h-captcha-response': captchaToken,
+      'h-captcha-response': this.captchaToken,
     };
 
     this.http.post<{ success: boolean; message: string }>(this.formConfig.endpoint, payload).subscribe({
@@ -72,7 +87,8 @@ export class ContactSection {
           this.formModel.name = '';
           this.formModel.email = '';
           this.formModel.message = '';
-          (window as { hcaptcha?: { reset: () => void } }).hcaptcha?.reset();
+          this.captchaToken = '';
+          (window as WindowWithHCaptcha).hcaptcha?.reset();
         } else {
           this.submitError.set(response.message || 'Something went wrong while sending your message.');
         }
@@ -84,4 +100,108 @@ export class ContactSection {
       },
     });
   }
+
+  private ensureCaptchaScript(): void {
+    const win = window as WindowWithHCaptcha;
+
+    if (win.hcaptcha) {
+      this.renderCaptcha();
+      return;
+    }
+
+    win.onPortfolioCaptchaLoad = () => this.renderCaptcha();
+
+    if (this.document.querySelector('script[data-hcaptcha-script="true"]')) {
+      return;
+    }
+
+    this.scriptElement = this.document.createElement('script');
+    this.scriptElement.src = 'https://js.hcaptcha.com/1/api.js?onload=onPortfolioCaptchaLoad&render=explicit';
+    this.scriptElement.async = true;
+    this.scriptElement.defer = true;
+    this.scriptElement.setAttribute('data-hcaptcha-script', 'true');
+    this.document.body.appendChild(this.scriptElement);
+  }
+
+  private renderCaptcha(): void {
+    const win = window as WindowWithHCaptcha;
+    const element = this.captchaContainer?.nativeElement;
+
+    if (!win.hcaptcha || !element || this.captchaRendered) {
+      return;
+    }
+
+    this.captchaTheme = this.getCaptchaTheme();
+
+    win.hcaptcha.render(element, {
+      sitekey: '50b2fe65-b00b-4b9e-ad62-3ba471098be2',
+      theme: this.captchaTheme,
+      callback: (token: string) => {
+        this.captchaToken = token;
+        this.submitError.set('');
+      },
+      'expired-callback': () => {
+        this.captchaToken = '';
+      },
+      'error-callback': () => {
+        this.captchaToken = '';
+        this.submitError.set('Captcha failed to load. Please refresh the page and try again.');
+      },
+    });
+
+    this.captchaRendered = true;
+  }
+
+  private observeThemeChanges(): void {
+    this.themeObserver = new MutationObserver(() => {
+      const nextTheme = this.getCaptchaTheme();
+
+      if (nextTheme !== this.captchaTheme) {
+        this.rerenderCaptcha(nextTheme);
+      }
+    });
+
+    this.themeObserver.observe(this.document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+  }
+
+  private rerenderCaptcha(nextTheme: 'light' | 'dark'): void {
+    const element = this.captchaContainer?.nativeElement;
+    const win = window as WindowWithHCaptcha;
+
+    if (!element || !win.hcaptcha) {
+      this.captchaTheme = nextTheme;
+      return;
+    }
+
+    this.captchaTheme = nextTheme;
+    this.captchaToken = '';
+    this.captchaRendered = false;
+    element.innerHTML = '';
+    win.hcaptcha.reset();
+    this.renderCaptcha();
+  }
+
+  private getCaptchaTheme(): 'light' | 'dark' {
+    return this.document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+}
+
+interface WindowWithHCaptcha extends Window {
+  hcaptcha?: {
+    render: (
+      container: HTMLElement,
+      options: {
+        sitekey: string;
+        theme: 'light' | 'dark';
+        callback: (token: string) => void;
+        'expired-callback': () => void;
+        'error-callback': () => void;
+      }
+    ) => void;
+    reset: () => void;
+  };
+  onPortfolioCaptchaLoad?: () => void;
 }

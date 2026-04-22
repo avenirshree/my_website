@@ -103,6 +103,11 @@ button:disabled {
 .captcha-shell {
   overflow: hidden;
   border-radius: 1rem;
+  min-height: 78px;
+}
+
+.captcha-widget {
+  min-height: 78px;
 }
 
 .bot-field {
