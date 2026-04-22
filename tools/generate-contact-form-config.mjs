@@ -13,13 +13,15 @@ const outputPath = path.join(
 const accessKey =
   process.env.NG_APP_WEB3FORMS_ACCESS_KEY || 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
 
-const fileContents = `export const CONTACT_FORM_CONFIG = {
+const fileContents = `import { ContactFormConfig } from './contact-form-config.model';
+
+export const CONTACT_FORM_CONFIG: ContactFormConfig = {
   provider: 'Web3Forms',
   endpoint: 'https://api.web3forms.com/submit',
   accessKey: '${accessKey}',
   subject: 'New Portfolio Contact Form Submission',
   fromName: 'Anil Jadhav Portfolio',
-} as const;
+};
 `;
 
 await mkdir(path.dirname(outputPath), { recursive: true });
