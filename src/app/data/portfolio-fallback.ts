@@ -3,10 +3,10 @@ import { PortfolioData } from '../models/portfolio';
 export const PORTFOLIO_FALLBACK_DATA: PortfolioData = {
   profile: {
     name: 'Anil Jadhav',
-    role: 'Founder, AniverShree | Full Stack Developer (Angular + Spring Boot)',
+    role: 'Founder, AvenirShree | Full Stack Developer (Angular + Spring Boot)',
     tagline: 'Building Smart Applications & Scalable Systems',
-    bio: 'Founder of AniverShree and a passionate developer building scalable web applications and intelligent systems. Experienced in Angular, Spring Boot, and AI-powered applications, I enjoy solving real-world problems and creating user-friendly digital experiences through products delivered by my company.',
-    email: 'anil.jadhav@anivershree.com',
+    bio: 'Founder of AvenirShree and a passionate developer building scalable web applications and intelligent systems. Experienced in Angular, Spring Boot, and AI-powered applications, I enjoy solving real-world problems and creating user-friendly digital experiences through products delivered by my company.',
+    email: 'anil.jadhav@avenirshree.com',
     github: 'https://github.com/avenirshree',
     linkedin: 'https://linkedin.com/in/aniljadhav2833',
     stats: {
